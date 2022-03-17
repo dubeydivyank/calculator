@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spartan:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <title>Calculator</title>
+  </head>
+  <body class="theme-1">
+    <div class="container">
+      <!------------- Header & Theme Toggle Buttons ----------------------------->
+      <header>
+        <h2>calc</h2>
+        <div class="theme">
+          <span>THEME</span>
+          <div class="toggle">
+            <div class="theme-no">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+            </div>
+            <div class="radio-buttons">
+              <label>
+                <input type="radio" name="theme-button" id="1" checked />
+              </label>
+              <label>
+                <input type="radio" name="theme-button" id="2" />
+              </label>
+              <label>
+                <input type="radio" name="theme-button" id="3" />
+              </label>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!------------------- Display Calculations --------------------------------->
+      <div class="screen-container"></div>
+
+      <!------------------------- Buttons ---------------------------------------->
+      <div class="buttons-container"></div>
+
+      <!--------------------------------->
+    </div>
+    <script src="./scripts.js"></script>
+  </body>
+</html>
