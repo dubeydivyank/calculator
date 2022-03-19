@@ -34,8 +34,10 @@ select {
   --clr-shadow-keys-2: hsl(6, 70%, 34%);
   --clr-shadow-keys-3: hsl(28, 16%, 65%);
   /* TEXT COLOR */
-  --clr-text-1: hsl(221, 14%, 31%);
-  --clr-text-2: hsl(0, 0, 100%);
+  --clr-text-top: hsl(0, 0%, 100%);
+  --clr-text-num-keys: hsl(221, 14%, 31%);
+  --clr-text-del-reset: hsl(0, 0%, 100%);
+  --clr-text-equaltosign: hsl(0, 0%, 100%);
 }
 
 .theme-2 {
@@ -51,8 +53,10 @@ select {
   --clr-shadow-keys-2: hsl(25, 99%, 27%);
   --clr-shadow-keys-3: hsl(35, 11%, 61%);
   /* TEXT COLOR */
-  --clr-text-1: hsl(60, 10%, 19%);
-  --clr-text-2: hsl(0, 0, 100%);
+  --clr-text-top: hsl(60, 10%, 19%);
+  --clr-text-num-keys: hsl(60, 10%, 19%);
+  --clr-text-del-reset: hsl(0, 0%, 100%);
+  --clr-text-equaltosign: hsl(0, 0%, 100%);
 }
 
 .theme-3 {
@@ -68,18 +72,274 @@ select {
   --clr-shadow-keys-2: hsl(177, 92%, 70%);
   --clr-shadow-keys-3: hsl(290, 70%, 36%);
   /* TEXT COLOR */
-  --clr-text-1: hsl(52, 100%, 62%);
-  --clr-text-2: hsl(198, 20%, 13%);
-  --clr-text-3: hsl(0, 0, 100%);
+  --clr-text-top: hsl(52, 100%, 62%);
+  --clr-text-num-keys: hsl(52, 100%, 62%);
+  --clr-text-del-reset: hsl(0, 0%, 100%);
+  --clr-text-equaltosign: hsl(198, 20%, 13%);
 }
 
+/*-----------------------------------------------------------------*/
 body {
   font-family: var(--ff-spartan);
   background-color: var(--bg-main);
 }
 
 .container {
+  margin: auto;
+  margin-top: 6.5vh;
+  height: 667px;
+  width: 375px;
+  border: 2px solid black;
+  border-radius: 10px;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.header-container {
+  margin: auto;
+  /* margin-top: -2px; */
+  /* margin-bottom: -10px; */
+  height: 88px;
+  width: 327px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--clr-text-top);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.theme {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 12px;
+}
+.theme-no {
+  position: relative;
+  padding-left: 100px;
+  padding-bottom: 5px;
+}
+
+.theme-no span {
+  padding: 6px;
+}
+
+.toggle {
+  /* padding-left: 20px; */
+  display: flex;
+  align-items: center;
+}
+
+.toggle span {
+  padding-right: 20px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+.radio-buttons {
+  background-color: var(--bg-keypad);
+  height: 26px;
+  width: 66px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-buttons input[type="radio"] {
+  opacity: 0;
+  cursor: pointer;
+  /* display: flex; */
+  /* align-items: center; */
+  margin: 2.5px 3.5px 4.5px;
+}
+
+/* .radio-buttons input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  border: none;
+  cursor: pointer;
+
+  height: 16px;
+  width: 16px;
+
+  border-radius: 50%;
+  background-color: var(--clr-keys-2);
+} */
+
+.radio-buttons input[type="radio"]:checked ~ .radio-button {
+  content: "";
+  position: absolute;
+  margin-top: -18px;
+  margin-left: 2px;
+  border: none;
+  cursor: pointer;
+
+  height: 16px;
+  width: 16px;
+
+  border-radius: 50%;
+  background-color: var(--clr-keys-2);
+}
+
+/*----------------------------Screen---------------------------------- */
+.screen-container {
+  margin: auto;
+  height: 88px;
+  width: 327px;
+  /* border: 1px solid green; */
+  background-color: var(--bg-screen);
+  border-radius: 10px;
+  color: var(--clr-text-top);
+}
+
+/* --------------------------- --------keypad------------------------------------- */
+.buttons-container {
+  margin: auto;
+  height: 420px;
+  width: 327px;
+  /* border: 1px solid blue; */
+  background-color: var(--bg-keypad);
+  border-radius: 10px;
+}
+button:active {
+  box-shadow: none;
+  position: relative;
+  top: 3px;
+}
+
+.keypad-container {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 17px 12px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "seven eight nine delete"
+    "four five six plus"
+    "one two three minus"
+    "dot zero divide multiply"
+    "reset reset equal equal";
+}
+
+.seven {
+  grid-area: seven;
+}
+
+.eight {
+  grid-area: eight;
+}
+
+.nine {
+  grid-area: nine;
+}
+
+.delete {
+  grid-area: delete;
+}
+
+.four {
+  grid-area: four;
+}
+
+.five {
+  grid-area: five;
+}
+
+.six {
+  grid-area: six;
+}
+
+.plus {
+  grid-area: plus;
+}
+
+.one {
+  grid-area: one;
+}
+
+.two {
+  grid-area: two;
+}
+
+.three {
+  grid-area: three;
+}
+
+.minus {
+  grid-area: minus;
+}
+
+.dot {
+  grid-area: dot;
+}
+
+.zero {
+  grid-area: zero;
+}
+
+.divide {
+  grid-area: divide;
+}
+
+.multiply {
+  grid-area: multiply;
+}
+
+.reset {
+  grid-area: reset;
+}
+
+.equal {
+  grid-area: equal;
+}
+
+.one,
+.two,
+.three,
+.four,
+.five,
+.six,
+.seven,
+.eight,
+.nine,
+.dot,
+.zero,
+.divide,
+.plus,
+.minus,
+.multiply {
+  background-color: var(--clr-keys-3);
+  border: none;
+  border-radius: 4px;
+  height: 60px;
+  width: 60px;
+  color: var(--clr-text-num-keys);
+  font-size: 32px;
+  cursor: pointer;
+  box-shadow: 0px 4px 0px 0px var(--clr-shadow-keys-3);
+}
+
+.delete,
+.reset {
+  background-color: var(--clr-keys-1);
+  border: none;
+  border-radius: 4px;
+  color: var(--clr-text-del-reset);
+  cursor: pointer;
+  box-shadow: 0px 4px 0px 0px var(--clr-shadow-keys-1);
+}
+
+.equal {
+  background-color: var(--clr-keys-2);
+  border: none;
+  border-radius: 4px;
+  color: var(--clr-text-equaltosign);
+  cursor: pointer;
+  box-shadow: 0px 4px 0px 0px var(--clr-shadow-keys-2);
 }

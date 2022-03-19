@@ -15,40 +15,84 @@
     <title>Calculator</title>
   </head>
   <body class="theme-1">
-    <div class="container">
-      <!------------- Header & Theme Toggle Buttons ----------------------------->
-      <header>
-        <h2>calc</h2>
-        <div class="theme">
-          <span>THEME</span>
-          <div class="toggle">
+    <div class="con">
+      <div class="container">
+        <!------------- Header & Theme Toggle Buttons ----------------------------->
+        <header class="header-container">
+          <h2>calc</h2>
+          <div class="theme">
             <div class="theme-no">
               <span>1</span>
               <span>2</span>
               <span>3</span>
             </div>
-            <div class="radio-buttons">
-              <label>
-                <input type="radio" name="theme-button" id="1" checked />
-              </label>
-              <label>
-                <input type="radio" name="theme-button" id="2" />
-              </label>
-              <label>
-                <input type="radio" name="theme-button" id="3" />
-              </label>
+            <div class="toggle">
+              <span>THEME</span>
+              <div class="radio-buttons">
+                <label>
+                  <input
+                    type="radio"
+                    class="button"
+                    name="theme-button"
+                    id="1"
+                    checked
+                  />
+                  <div class="radio-button"></div>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    class="button"
+                    name="theme-button"
+                    id="2"
+                  />
+                  <div class="radio-button"></div>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    class="button"
+                    name="theme-button"
+                    id="3"
+                  />
+                  <div class="radio-button"></div>
+                </label>
+              </div>
             </div>
           </div>
+        </header>
+
+        <!------------------- Display Calculations --------------------------------->
+        <div class="screen-container">
+          <div class="upper-screen">75797</div>
+          <div class="lower-screen">asfadfadfa</div>
         </div>
-      </header>
 
-      <!------------------- Display Calculations --------------------------------->
-      <div class="screen-container"></div>
-
-      <!------------------------- Buttons ---------------------------------------->
-      <div class="buttons-container"></div>
-
-      <!--------------------------------->
+        <!------------------------- Buttons ---------------------------------------->
+        <div class="buttons-container">
+          <div class="keypad-container">
+            <button type="button" class="one">1</button>
+            <button type="button" class="two">2</button>
+            <button type="button" class="three">3</button>
+            <button type="button" class="four">4</button>
+            <button type="button" class="five">5</button>
+            <button type="button" class="six">6</button>
+            <button type="button" class="seven">7</button>
+            <button type="button" class="eight">8</button>
+            <button type="button" class="nine">9</button>
+            <button type="button" class="delete">DEL</button>
+            <button type="button" class="dot">.</button>
+            <button type="button" class="zero">0</button>
+            <button type="button" class="divide">/</button>
+            <button type="button" class="plus">+</button>
+            <button type="button" class="minus">-</button>
+            <button type="button" class="multiply">x</button>
+            <button type="button" class="reset">RESET</button>
+            <button type="button" class="equal">=</button>
+          </div>
+        </div>
+        <!--------------------------------->
+      </div>
     </div>
     <script src="./scripts.js"></script>
   </body>
