@@ -89,7 +89,7 @@ body {
   margin-top: 6.5vh;
   height: 667px;
   width: 375px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 10px;
 
   display: flex;
@@ -100,8 +100,6 @@ body {
 
 .header-container {
   margin: auto;
-  /* margin-top: -2px; */
-  /* margin-bottom: -10px; */
   height: 88px;
   width: 327px;
   display: flex;
@@ -129,7 +127,6 @@ body {
 }
 
 .toggle {
-  /* padding-left: 20px; */
   display: flex;
   align-items: center;
 }
@@ -153,23 +150,8 @@ body {
 .radio-buttons input[type="radio"] {
   opacity: 0;
   cursor: pointer;
-  /* display: flex; */
-  /* align-items: center; */
   margin: 2.5px 3.5px 4.5px;
 }
-
-/* .radio-buttons input[type="radio"]:checked::before {
-  content: "";
-  position: absolute;
-  border: none;
-  cursor: pointer;
-
-  height: 16px;
-  width: 16px;
-
-  border-radius: 50%;
-  background-color: var(--clr-keys-2);
-} */
 
 .radio-buttons input[type="radio"]:checked ~ .radio-button {
   content: "";
@@ -191,10 +173,25 @@ body {
   margin: auto;
   height: 88px;
   width: 327px;
-  /* border: 1px solid green; */
   background-color: var(--bg-screen);
   border-radius: 10px;
   color: var(--clr-text-top);
+}
+
+.upper-screen {
+  font-size: 12px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 24px;
+}
+
+.screen {
+  font-size: 32px;
+
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 26px;
+  margin-right: 24px;
 }
 
 /* --------------------------- --------keypad------------------------------------- */
@@ -202,10 +199,10 @@ body {
   margin: auto;
   height: 420px;
   width: 327px;
-  /* border: 1px solid blue; */
   background-color: var(--bg-keypad);
   border-radius: 10px;
 }
+
 button:active {
   box-shadow: none;
   position: relative;
@@ -227,93 +224,93 @@ button:active {
     "reset reset equal equal";
 }
 
-.seven {
+#seven {
   grid-area: seven;
 }
 
-.eight {
+#eight {
   grid-area: eight;
 }
 
-.nine {
+#nine {
   grid-area: nine;
 }
 
-.delete {
+#delete {
   grid-area: delete;
 }
 
-.four {
+#four {
   grid-area: four;
 }
 
-.five {
+#five {
   grid-area: five;
 }
 
-.six {
+#six {
   grid-area: six;
 }
 
-.plus {
+#plus {
   grid-area: plus;
 }
 
-.one {
+#one {
   grid-area: one;
 }
 
-.two {
+#two {
   grid-area: two;
 }
 
-.three {
+#three {
   grid-area: three;
 }
 
-.minus {
+#minus {
   grid-area: minus;
 }
 
-.dot {
+#dot {
   grid-area: dot;
 }
 
-.zero {
+#zero {
   grid-area: zero;
 }
 
-.divide {
+#divide {
   grid-area: divide;
 }
 
-.multiply {
+#multiply {
   grid-area: multiply;
 }
 
-.reset {
+#reset {
   grid-area: reset;
 }
 
-.equal {
+#equal {
   grid-area: equal;
 }
 
-.one,
-.two,
-.three,
-.four,
-.five,
-.six,
-.seven,
-.eight,
-.nine,
-.dot,
-.zero,
-.divide,
-.plus,
-.minus,
-.multiply {
+#one,
+#two,
+#three,
+#four,
+#five,
+#six,
+#seven,
+#eight,
+#nine,
+#dot,
+#zero,
+#divide,
+#plus,
+#minus,
+#multiply {
   background-color: var(--clr-keys-3);
   border: none;
   border-radius: 4px;
@@ -325,8 +322,8 @@ button:active {
   box-shadow: 0px 4px 0px 0px var(--clr-shadow-keys-3);
 }
 
-.delete,
-.reset {
+#delete,
+#reset {
   background-color: var(--clr-keys-1);
   border: none;
   border-radius: 4px;
@@ -335,7 +332,7 @@ button:active {
   box-shadow: 0px 4px 0px 0px var(--clr-shadow-keys-1);
 }
 
-.equal {
+#equal {
   background-color: var(--clr-keys-2);
   border: none;
   border-radius: 4px;
