@@ -86,7 +86,7 @@ body {
 
 .container {
   margin: auto;
-  margin-top: 6.5vh;
+  /* margin-top: 6.5vh; */
   height: 667px;
   width: 375px;
   /* border: 2px solid black; */
@@ -176,13 +176,6 @@ body {
   background-color: var(--bg-screen);
   border-radius: 10px;
   color: var(--clr-text-top);
-}
-
-.upper-screen {
-  font-size: 12px;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 24px;
 }
 
 .screen {
@@ -339,4 +332,66 @@ button:active {
   color: var(--clr-text-equaltosign);
   cursor: pointer;
   box-shadow: 0px 4px 0px 0px var(--clr-shadow-keys-2);
+}
+
+@media screen and (min-width: 481px) and (max-width = 768px) {
+}
+
+@media screen and (min-width: 767px) {
+  .container {
+    min-width: 550px;
+    min-height: 768px;
+    /* margin-top: 6.5vh; */
+  }
+  .header-container {
+    min-width: 540px;
+    margin-bottom: -40px;
+  }
+  .screen-container {
+    min-width: 540px;
+    min-height: 110px;
+  }
+  .screen {
+    margin-top: 30px;
+    margin-right: 30px;
+    font-size: 48px;
+  }
+
+  .buttons-container {
+    min-width: 540px;
+    min-height: 470px;
+    margin-top: -15px;
+  }
+
+  .keypad-container {
+    padding: 30px;
+    gap: 28px 25px;
+  }
+
+  #one,
+  #two,
+  #three,
+  #four,
+  #five,
+  #six,
+  #seven,
+  #eight,
+  #nine,
+  #dot,
+  #zero,
+  #divide,
+  #plus,
+  #minus,
+  #multiply,
+  #delete {
+    width: 101px;
+    border-radius: 8px;
+  }
+
+  #reset,
+  #equal {
+    min-width: 227px;
+    border-radius: 8px;
+    font-size: 20px;
+  }
 }
