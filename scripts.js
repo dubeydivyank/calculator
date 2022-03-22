@@ -1,8 +1,12 @@
 const theme = document.querySelector(".radio-buttons");
 const screen = document.querySelector(".screen");
 const keypress = document.querySelector(".keypad-container");
-const theme_sfx = new Audio("./audio/theme-switch.mp3");
-//-----------------------------------------------------------------------------//
+const theme_sfx = new Audio("./audio/switch-sfx.mp3");
+const key_sfx = new Audio("./audio/keys-sfx.mp3");
+theme_sfx.preload = "auto";
+key_sfx.preload = "auto";
+
+//------------------------------CHANGE THEME------------------------------------//
 theme.addEventListener("click", (e) => {
   theme_sfx.play();
   if (e.target.checked) {
@@ -22,13 +26,14 @@ theme.addEventListener("click", (e) => {
   }
 });
 
-//-----------------------------------------------------------------------------//
+//------------------------------CALCULATOR LOGIC--------------------------------//
 let operand = "";
 let operation = "";
 let resultSoFar = "";
 let displayOnScreen = "";
 
 keypress.addEventListener("click", (e) => {
+  key_sfx.play();
   //if we press a number right after '=', it will reset the previously calculated result
   if (
     e.target.id !== "delete" &&
@@ -167,7 +172,8 @@ keypress.addEventListener("click", (e) => {
     //------------------------------EQUAL-------------------------------//
     case "equal":
       resultSoFar = calculate(resultSoFar, operand, operation);
-      screen.innerHTML = resultSoFar;
+      let nf = new Intl.NumberFormat("en-US");
+      screen.innerHTML = nf.format(resultSoFar);
       operand = "";
       operation = "";
       displayOnScreen = "";

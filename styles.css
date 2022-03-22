@@ -86,12 +86,10 @@ body {
 
 .container {
   margin: auto;
-  /* margin-top: 6.5vh; */
+  margin-top: 4vh;
   height: 667px;
   width: 375px;
-  /* border: 2px solid black; */
   border-radius: 10px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,6 +100,7 @@ body {
   margin: auto;
   height: 88px;
   width: 327px;
+  margin-bottom: -18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -160,10 +159,10 @@ body {
   margin-left: 2px;
   border: none;
   cursor: pointer;
-
   height: 16px;
   width: 16px;
-
+  display: flex;
+  align-items: center;
   border-radius: 50%;
   background-color: var(--clr-keys-2);
 }
@@ -173,6 +172,7 @@ body {
   margin: auto;
   height: 88px;
   width: 327px;
+  margin-bottom: -1px;
   background-color: var(--bg-screen);
   border-radius: 10px;
   color: var(--clr-text-top);
@@ -180,7 +180,6 @@ body {
 
 .screen {
   font-size: 32px;
-
   display: flex;
   justify-content: flex-end;
   margin-top: 26px;
@@ -334,22 +333,20 @@ button:active {
   box-shadow: 0px 4px 0px 0px var(--clr-shadow-keys-2);
 }
 
-@media screen and (min-width: 481px) and (max-width = 768px) {
-}
-
 @media screen and (min-width: 767px) {
   .container {
     min-width: 550px;
     min-height: 768px;
-    /* margin-top: 6.5vh; */
+    margin-top: 0;
   }
   .header-container {
     min-width: 540px;
-    margin-bottom: -40px;
+    margin-bottom: -28px;
   }
   .screen-container {
     min-width: 540px;
     min-height: 110px;
+    margin-bottom: -15px;
   }
   .screen {
     margin-top: 30px;
@@ -360,7 +357,6 @@ button:active {
   .buttons-container {
     min-width: 540px;
     min-height: 470px;
-    margin-top: -15px;
   }
 
   .keypad-container {
