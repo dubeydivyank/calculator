@@ -27,7 +27,27 @@ let operand = "";
 let operation = "";
 let resultSoFar = "";
 let displayOnScreen = "";
+
 keypress.addEventListener("click", (e) => {
+  //if we press a number right after '=', it will reset the previously calculated result
+  if (
+    e.target.id !== "delete" &&
+    e.target.id !== "reset" &&
+    e.target.id !== "equal" &&
+    e.target.id !== "plus" &&
+    e.target.id !== "minus" &&
+    e.target.id !== "divide" &&
+    e.target.id !== "multiply"
+  ) {
+    if (
+      operation === "" &&
+      operand === "" &&
+      displayOnScreen === "" &&
+      resultSoFar !== ""
+    ) {
+      resultSoFar = "";
+    }
+  }
   switch (e.target.id) {
     case "one":
       operand += "1";
@@ -150,6 +170,8 @@ keypress.addEventListener("click", (e) => {
       screen.innerHTML = resultSoFar;
       operand = "";
       operation = "";
+      displayOnScreen = "";
+      // resultSoFar = "";
       break;
     //------------------------------RESET-------------------------------//
     case "reset":
@@ -160,6 +182,11 @@ keypress.addEventListener("click", (e) => {
       displayOnScreen = "";
       break;
     //------------------------------DELETE-------------------------------//
+    case "delete":
+      operand = operand.slice(0, -1);
+      displayOnScreen = displayOnScreen.slice(0, -1);
+      screen.innerHTML = displayOnScreen;
+      break;
   }
 });
 
