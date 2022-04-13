@@ -177,27 +177,17 @@ body {
   background-color: var(--bg-screen);
   border-radius: 10px;
   color: var(--clr-text-top);
-  /* overflow-x: auto; */
-  /* overflow-wrap: anywhere; */
+  overflow-x: auto;
+  overflow-wrap: anywhere;
 }
 
-.screen-1 {
-  font-size: 14px;
-  padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  display: flex;
-  /* align-items: center; */
-  justify-content: flex-end;
-}
-
-.screen-2 {
-  font-size: 27px;
-  padding-right: 20px;
+.screen {
+  font-size: 28px;
+  padding: 0px 20px 20px 30px;
   display: flex;
   justify-content: flex-end;
   /* align-items: center; */
-  margin-top: 26px;
+  margin-top: 29px;
   /* margin-right: 24px; */
   /* overflow-wrap: anywhere; */
 }
