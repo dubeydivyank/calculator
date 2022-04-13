@@ -3,11 +3,9 @@ const operatorBtns = document.querySelectorAll(".operator");
 const equalsBtn = document.querySelector(".equals");
 const deleteBtn = document.querySelector(".delete");
 const resetBtn = document.querySelector(".reset");
-const display1 = document.querySelector(".screen-1");
-const display2 = document.querySelector(".screen-2");
+const screen = document.querySelector(".screen");
 const themeSelector = document.querySelector(".radio-buttons");
 const theme_sfx = new Audio("./audio/switch-sfx.mp3");
-const key_sfx = new Audio("./audio/keys-sfx.mp3");
 //------------------------------CHANGE THEME------------------------------------//
 themeSelector.addEventListener("click", (e) => {
   theme_sfx.play();
@@ -30,61 +28,55 @@ themeSelector.addEventListener("click", (e) => {
 
 //------------------------------------------------------------------//
 let operand = "";
-let res = "";
+let result = "";
 let operator = "";
 let lastOperation = "";
 let display = "";
-
 let decimalAlreadyUsed = false;
 
-//------------------------------------------------------------------//
+//-----------------------------NUMBERS-------------------------------------//
 numberBtns.forEach((button) => {
   button.addEventListener("click", (e) => {
+    if (operand === "" && operator === "") {
+      display = "";
+      result = "";
+    }
+
     if (e.target.innerText === "." && !decimalAlreadyUsed) {
       decimalAlreadyUsed = true;
     } else if (e.target.innerText === "." && decimalAlreadyUsed) {
       return;
     }
     operand += e.target.innerText;
-    display2.innerText = display + operand;
+    display += e.target.innerText;
+    screen.innerText = display;
   });
 });
 
-//------------------------------------------------------------------//
+//-----------------------------OPERATORS-------------------------------------//
 operatorBtns.forEach((button) => {
   button.addEventListener("click", (e) => {
+    if (display[display.length - 1] === ".") return;
+
+    if (operand === "" && result === "") return;
+
     if (lastOperation) {
       operand = calculate();
       decimalAlreadyUsed = false;
-
       lastOperation = "";
-      display = operand + operator;
-      display2.innerText = display;
-      // operand = "";
-      res = "";
+      result = "";
+      display = `${operand}${operator}`;
+      screen.innerText = display;
     }
-    switch (e.target.id) {
-      case "plus":
-        operator = "+";
-        break;
-      case "minus":
-        operator = "-";
-        break;
-      case "divide":
-        operator = "/";
-        break;
-      case "multiply":
-        operator = "*";
-        break;
-    }
-    if (operand === "" && res === "") return;
-    decimalAlreadyUsed = false;
 
+    operator = e.target.innerHTML;
+    decimalAlreadyUsed = false;
     lastOperation = operator;
-    res = calculate();
-    display = res + operator;
-    display2.innerText = display;
+
+    result = calculate();
     operand = "";
+    display = `${result}${operator}`;
+    screen.innerText = display;
   });
 });
 
@@ -92,44 +84,65 @@ operatorBtns.forEach((button) => {
 
 resetBtn.addEventListener("click", () => {
   operand = "";
-  res = "";
+  result = "";
   operator = "";
   lastOperation = "";
   display = "";
-  display2.innerText = 0;
+  screen.innerText = "";
+  decimalAlreadyUsed = false;
 });
 
 //---------------------------EQUALS--------------------------------//
-equalsBtn.addEventListener("click", () => {});
+equalsBtn.addEventListener("click", () => {
+  if (!operator) return;
+  if (display[display.length - 1] === ".") return;
+  result = calculate();
+  display = result;
+  screen.innerText = display;
+  operand = "";
+  operator = "";
+  lastOperation = "";
+});
 
 //----------------------------DELETE-------------------------------//
-deleteBtn.addEventListener("click", () => {});
+deleteBtn.addEventListener("click", () => {
+  if (display[display.length - 1] === operator) {
+    operator = "";
+    lastOperation = "";
+  } else {
+    operand = operand.slice(0, -1);
+  }
 
-//------------------------------------------------------------------//
+  display = display.slice(0, -1);
+  screen.innerHTML = display;
+});
 
 //----------------------------CALCULATE-----------------------------//
 function calculate() {
-  if (operand === "" && res === "") return "";
+  if (operand === "" && result === "") return "";
+
   switch (operator) {
     case "+":
-      return res === "" ? operand : Number(res) + Number(operand);
+      return result === "" ? operand : Number(result) + Number(operand);
+
     case "-":
-      return res === "" ? operand : Number(res) - Number(operand);
-    case "*":
-      if (res === "" || operand === "") {
-        if (res === "") return operand;
-        else if (operand === "") return res;
+      return result === "" ? operand : Number(result) - Number(operand);
+
+    case "x":
+      if (result === "" || operand === "") {
+        if (result === "") return operand;
+        else if (operand === "") return result;
       }
-      return Number(res) * Number(operand);
-    // return res === "" || operand === ""
-    //   ? operand
-    //   : Number(res) * Number(operand);
+      return (Number(result) * Number(operand)).toFixed(2);
+
     case "/":
-      if (res === "" || operand === "") {
-        if (res === "") return operand;
-        else if (operand === "") return res;
+      if (result === "" || operand === "") {
+        if (result === "") return operand;
+        else if (operand === "") return result;
       }
-      return Number(res) / Number(operand);
-    // return res === "" ? operand : Number(res) / Number(operand);
+
+      const temp = Number(result) / Number(operand);
+      if (isNaN(temp)) return "undefined";
+      else return temp.toFixed(2);
   }
 }
